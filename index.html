@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="intro"></div>
+        <div>
+            <div class="headerOfForm">
+                <div>ADD YOUR BOOK</div>
+                <div class="iconContainer">
+                    <span class="iconify" data-icon="mdi:arrow-left"></span>
+                </div>
+                
+            </div>
+            <form action="" novalidate="true">
+                <div>
+                    <label for="title">TITLE:</label>
+                    <input title="require" id="title" class="noDefault" type="text" required>
+                    <div class="errorDisplay">This book has been added</div>
+                </div>
+                <div>
+                    <label for="author">AUTHOR:</label>
+                    <input title="require" type="text" class="noDefault" id="author" required>
+                </div>
+                <div>
+                    <label for="totalPages">NUMBER OF PAGES:</label>
+                    <input title="require" type="text" class="noDefault" id="totalPages" required pattern="[0-9]+">
+                </div>
+                <div>
+                    <label for="checkedAlreadyRead">DO YOU HAVE ALREADY READ</label>
+                    <input title="require" type="checkbox" class="noDefault" id="checkedAlreadyRead">
+                </div>
+                <div class="pageRangeContainer">
+                    <label for="alreadyReadPage">PAGES YOU HAVE READ</label>
+                    <div >
+                        <div>
+                            <input title="require"  type="text" pattern="[0-9]+" class="numberOFPageThatHasRead noDefault" required>
+                            <span>pages</span>
+                        </div>
+                        <input type="range" id="alreadyReadPage" step="1">
+                    </div>
+                </div>
+                <div>
+                    <button type="button">Add to your Library</button>
+                </div>
+            </form>
+        </div>
+        
+        <div class="bookCardsContainer">
+            <div class="confirmDeleteContainer">
+                <div>Do you want to delete?</div>
+                <button class="confirm">Delete</button>
+                <button class="cancel">Cancel</button>
+            </div>
+            <div class="menuIcon">
+                <span>New</span>
+                <span class="iconify" data-icon="mdi:plus-box-multiple-outline"></span>        
+            </div>
+    </div>
+    <script src="https://code.iconify.design/2/2.2.0/iconify.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

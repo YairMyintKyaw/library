@@ -1,0 +1,333 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+3D&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+:root{
+    --card-color:#fdfffc;
+    --card-container-color:#a8dadc;
+    --booking-adding-section-color:#1d3557;
+}
+
+
+
+.container{
+    font-family: 'Source Sans Pro', sans-serif;
+    display: grid;
+    height: 100vh;
+    width: 100vw;
+}
+
+.intro{
+    position: relative;
+    align-self: center;
+
+    /* center X-axis */
+    margin: auto; 
+    user-select: none;
+    transition: all 1s ease;
+
+    padding: 10px;
+}
+
+.text{
+    position: relative;
+    transition: all .5s ease-in;
+    font-family: 'Rock 3D', cursive;
+    color: #14213d;;
+    font-size: 1.5rem;
+    font-weight: 900;
+}
+
+
+.noDefault{
+    appearance: none;
+    -webkit-appearance: none;
+    border: none;
+}
+
+#checkedAlreadyRead{
+    position: relative;
+    width: 40px;
+    height: 20px;
+    cursor: pointer;
+    background-color: #d90429 ;
+    border-radius: 10px;
+}
+#checkedAlreadyRead::before{
+    position: absolute;
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    left: 0;
+    background-color: aliceblue;
+    transition: all .5s ease;
+}
+#checkedAlreadyRead:checked::before{
+    left: 20px;
+}
+#checkedAlreadyRead:checked{
+    background-color: rgb(0, 255, 0);
+}
+
+/* Add new book */
+.container > div:nth-child(2){
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap:20px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background-color: var(--booking-adding-section-color);
+    padding: 20px;
+    color: white;
+    box-sizing: border-box;
+}
+/* headerOfForm */
+.headerOfForm{
+    width: 100%;
+    display: flex;
+    justify-content:flex-end;
+    align-items: center;
+    position: relative;
+}
+
+.headerOfForm>div:first-child{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    
+    bottom: 0;
+    margin: auto;
+    text-align: center;
+    padding-top: 5px;
+}
+
+/* icon */
+.iconContainer{
+    flex-grow: 0;
+    flex-basis: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    width: 34px;
+    height: 34px;
+    border-radius: 100%;
+    z-index: 1;
+}
+.iconContainer:hover{
+    background-color: #262f41;
+    opacity: .8;
+}
+.iconify{
+    font-size: 1.5rem;
+}
+
+.container>div:nth-child(2)>form{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 90%;
+}
+
+.container>div:nth-child(2)>form>div{
+    display: flex;
+    flex-direction: column;
+    font-size: .9rem;
+    gap: 5px;
+}
+
+/* hide error message */
+.errorDisplay{
+    display: none;
+    color: #fdfffc;
+    font-weight: 800;
+    background-color: #ff002b;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+
+input.noDefault[type='text']{
+    padding:5px 10px;
+    border-radius: 5px;
+    height: 20px;
+}
+
+.pageRangeContainer>div:last-child{
+    display: flex;
+    flex-direction: column;
+}
+
+.numberOFPageThatHasRead{
+    width: 50px;
+}
+
+/* button */
+form button{
+    padding: 5px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    height: 35px;
+}
+
+
+
+/* Cards */
+
+.bookCardsContainer{
+    display: none;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    grid-template-rows: 40px;
+    grid-auto-rows: 300px;
+    padding: 10px;
+    gap: 10px;
+    background-color: var(--card-container-color);
+    position: relative;
+}
+/* menu icon */
+.menuIcon{
+    /* fill the first entire */
+    grid-column: 1/-1; 
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1px;
+
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: solid 1px #14213d;
+    border-radius: 50px;
+    color: #14213d;
+    background-color: #fdfffc;
+    padding: 15px 18px;
+
+    width: fit-content;
+    justify-self: end;
+    cursor: pointer;
+}
+
+/* to confirm delete */
+.confirmDeleteContainer{
+    position: absolute;
+    left: 0;
+    background-color: #1d3557;
+    height: fit-content;
+    padding: 20px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-size: 1rem;
+    gap: 5px;
+    color: #fdfffc;
+    user-select: none;
+    box-sizing: border-box;
+    align-content: space-around;
+    justify-content: center;
+}
+/* header text */
+.confirmDeleteContainer>div:first-child{
+    grid-column: 1/-1;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+/* button */
+.confirmDeleteContainer>button{
+    cursor:pointer;
+    font-weight: inherit;
+    background-color: #f1faee;
+    border-radius: 5px;
+    border: none;
+    padding: 5px 15px;
+}
+
+.confirmDeleteContainer>button:hover{
+    background-color: #fdfffc;
+}
+
+
+/* Card */
+.bookCard{
+    display: grid;
+    grid-template-columns:1fr 20px;
+    grid-template-rows: 30px;
+    grid-auto-rows: 1fr;
+    justify-content: space-between;
+
+    border-radius: 10px;
+    background-color: var(--card-color);
+    padding: 10px;
+
+    box-shadow: 2px 1px 3px #b1b1b1;
+}
+
+.deleteBtn{
+    width: 15px;
+    cursor: pointer;
+    grid-area: 1/2/2/-1;
+}
+
+.titleInCard{
+    grid-row: 1/2;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    overflow-x: scroll;
+    scrollbar-width: none;
+}
+
+.authorInCard{
+    text-transform:capitalize;
+}
+
+input.currentPage {
+    background-color: #f1faee;
+    border: solid 1px #14213d;
+    max-width: 50px ;
+    display: none;
+}
+
+.buttonInCard{
+    padding: 10px 20px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    border: solid 1px black;
+    box-shadow: 1px 1px 1px black;
+    cursor: pointer;
+}
+.editBtn{
+    /* background-color: #d90429; */
+}
+.confirmEditBtn{
+    display: none;
+    background-color: #a8dadc;
+    font-size: inherit;
+    font-weight: 550;
+    /* color: #f1faee; */
+}
+
+
+
+.authorInCard,.pagesInfoInCard,.bookCard #checkedAlreadyRead{
+    grid-column: 1/-1;
+}
+
+
+
+@media(max-width:600px){
+    .container{
+        grid-template-columns: 1fr;
+    }
+    .container>div:nth-child(2){
+        align-self: center;
+    }
+}
