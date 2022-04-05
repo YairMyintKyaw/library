@@ -168,6 +168,7 @@ function createBookInfoCard(obj){
 }
 
 finalDeleteBtn.addEventListener('click',()=>{
+    // search through the list of cards and delete the card
     document.querySelectorAll('.bookCard').forEach((card)=>{
         if(deleteCardObj.title==card.id){
             card.remove()
@@ -176,20 +177,20 @@ finalDeleteBtn.addEventListener('click',()=>{
     const indexOfObj=myLibrary.findIndex((obj)=>{
                         return JSON.stringify(obj)==JSON.stringify(deleteCardObj)
                     })
-    // save in library
+    // remove from library
     myLibrary.splice(indexOfObj,1)
     localStorage.setItem('library',JSON.stringify(myLibrary))
     
     // remove the confirm div after delete
-    confirmedDeleteContainer.style.top=`-${bookCardsContainer.offsetHeight}px`
+    confirmedDeleteContainer.style.top=`-${document.body.offsetHeight}px`
 })
 canceledDelete.addEventListener('click',()=>{
     // canceling the delete remove the confirm div
-    confirmedDeleteContainer.style.top=`-${bookCardsContainer.offsetHeight}px`
+    confirmedDeleteContainer.style.top=`-${document.body.offsetHeight}px`
 })
 
 showAddBookSection.addEventListener('click',()=>{
-    if(addBookSection.style.display=='none'){
+    if(getComputedStyle(addBookSection).display=='none'){
         addBookSection.style.display='flex'
         container.style.gridTemplateColumns=document.body.offsetWidth>=600?'minmax(300px,1fr) 3fr':'1fr';
     }else{
@@ -236,8 +237,8 @@ totalPages.addEventListener('input',()=>{
             pageNumberRange.value=totalPages.value;
         }
     }
-
     pageNumberRange.max=totalPages.value;   
+    isThatAlreadyRead()
 })
 pageNumberRange.addEventListener('input',()=>{
     if(totalPages.value.length==0){
@@ -277,6 +278,8 @@ window.addEventListener('resize',()=>{
     }else if(document.body.offsetWidth>=600 && getComputedStyle(addBookSection).display=='flex'){
         container.style.gridTemplateColumns='minmax(300px,1fr) 3fr';
     }
+    confirmedDeleteContainer.style.top=`-${document.body.offsetHeight}px`
+
 })
 
 window.addEventListener('load',()=>{
@@ -301,7 +304,7 @@ function Book(author,title,totalPages,hasRead,currentPage){
 
 let isEveryInputValid;
 addBtn.addEventListener('click',()=>{
-    isEveryInputValid=true;
+    isEveryInputValid=true; 
     inputs.forEach((input)=>{
         if(!input.validity.valid){
             input.style.border='solid 2px #d90429';
@@ -337,5 +340,8 @@ addBtn.addEventListener('click',()=>{
         inputs.forEach((input)=>{
             input.value=''
         })
+        // reset the switch
+        hasRead.checked=false
+        pageRangeContainer.style.display='flex'
     }
 })

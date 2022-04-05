@@ -9,6 +9,7 @@
     --card-color:#fdfffc;
     --card-container-color:#a8dadc;
     --booking-adding-section-color:#1d3557;
+    background-color: var(--card-container-color);
 }
 
 
@@ -36,8 +37,8 @@
     position: relative;
     transition: all .5s ease-in;
     font-family: 'Rock 3D', cursive;
-    color: #14213d;;
-    font-size: 1.5rem;
+    color: black;;
+    font-size: 2rem;
     font-weight: 900;
 }
 
@@ -80,6 +81,7 @@
     flex-direction: column;
     align-items: center;
     gap:20px;
+    height: 100%;
     font-size: 1.1rem;
     font-weight: 700;
     background-color: var(--booking-adding-section-color);
@@ -213,6 +215,7 @@ form button{
     width: fit-content;
     justify-self: end;
     cursor: pointer;
+    user-select: none;
 }
 
 /* to confirm delete */
@@ -258,7 +261,7 @@ form button{
 .bookCard{
     display: grid;
     grid-template-columns:1fr 20px;
-    grid-template-rows: 30px;
+    /* grid-template-rows: 30px; */
     grid-auto-rows: 1fr;
     justify-content: space-between;
 
