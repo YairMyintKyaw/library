@@ -228,7 +228,7 @@ totalPages.addEventListener('input',()=>{
         pageNumberRange.value=0;
         return;
     }
-    if(!totalPages.value[totalPages.value.length-1].match(/[0-9]+/)){
+    if(!totalPages.value[totalPages.value.length-1].match(/[0-9]/)){
         totalPages.value=totalPages.value.slice(0,totalPages.value.length-1)
     }else{
         pageNumberRange.max=totalPages.value;
@@ -261,7 +261,7 @@ function isThatAlreadyRead(){
 numberOFPageThatHasRead.addEventListener('input',()=>{
     if(numberOFPageThatHasRead.value.length==0){
         return;
-    }else if(!numberOFPageThatHasRead.value[numberOFPageThatHasRead.value.length-1].match(/[0-9]+/)){
+    }else if(!numberOFPageThatHasRead.value[numberOFPageThatHasRead.value.length-1].match(/[0-9]/)){
         numberOFPageThatHasRead.value=numberOFPageThatHasRead.value.slice(0,numberOFPageThatHasRead.value.length-1)
     }else if(+numberOFPageThatHasRead.value>+totalPages.value){
         numberOFPageThatHasRead.value=totalPages.value;
