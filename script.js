@@ -278,7 +278,7 @@ window.addEventListener('resize',()=>{
     }else if(document.body.offsetWidth>=600 && getComputedStyle(addBookSection).display=='flex'){
         container.style.gridTemplateColumns='minmax(300px,1fr) 3fr';
     }
-    confirmedDeleteContainer.style.top=`-${document.body.offsetHeight}px`
+    confirmedDeleteContainer.style.top=`-${document.body.offsetHeight+addBookSection.offsetHeight}px`
 
 })
 
